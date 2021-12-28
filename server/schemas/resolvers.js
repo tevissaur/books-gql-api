@@ -4,8 +4,8 @@ const { signToken } = require('../utils/auth')
 
 const resolvers = {
     Query: {
-        users: async (parent, args) => {
-            return await User.find({})
+        me: async (parent, { userId }) => {
+            return await User.findById(userId)
         }
     },
     Mutation: {
@@ -28,6 +28,15 @@ const resolvers = {
             }
             const token = signToken(user)
             return { token, user }
+        },
+        saveBook: async (parent, { _id, book }) => {
+            console.log(book)
+            const updatedUser = await User.findByIdAndUpdate(
+                _id,
+                { $set: { savedBooks: book } }
+            )
+            console.log(data)
+            return updatedUser
         }
     }
 }
