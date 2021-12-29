@@ -74,7 +74,7 @@ const SearchBooks = () => {
       const data = await saveBook({ 
         variables: { 
           _id,
-          savedBooks: bookToSave.title
+          book: bookToSave
          }
        })
        console.log(data, 'gql query')
