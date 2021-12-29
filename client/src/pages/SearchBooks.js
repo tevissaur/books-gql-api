@@ -78,14 +78,9 @@ const SearchBooks = () => {
          }
        })
        console.log(data, 'gql query')
-      // const response = await saveBook(bookToSave, token);
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-
-      // // if book successfully saves to user's account, save book id to state
+      // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+      saveBookIds(savedBookIds)
     } catch (err) {
       console.error(err);
     }
